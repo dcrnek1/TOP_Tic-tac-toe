@@ -1,14 +1,18 @@
 const gameBoard = (() => {
     let board = [
         ["", "", ""],
-        ["X", "X", ""],
+        ["", "", ""],
         ["", "", ""],
     ];
+    let locked = false;
 
     const getBoard = () => board.map(row => [...row]);
+    const isLocked = () => locked;
+
+    const toggleLock = () => locked = locked ? false : true;
 
     const write = (symbol, rowIndex, colIndex) => {
-        if (board[rowIndex][colIndex] === '') {
+        if (board[rowIndex][colIndex] === '' && !locked) {
             board[rowIndex][colIndex] = symbol
             if (board) return board;
         }  
@@ -17,7 +21,7 @@ const gameBoard = (() => {
        board.forEach(row => row.fill(""));
     }
 
-    return {getBoard, write, clearBoard};
+    return {getBoard, write, clearBoard, isLocked, toggleLock};
 })();
 
 const player = (name, symbol) => {
@@ -38,7 +42,7 @@ const game = (() => {
     }
 
     //will foreach through them and check if last player have any combination equal.
-    const winCombinations = [
+    const winCombs = [
         [[0, 0], [0, 1], [0, 2]], 
         [[1, 0], [1, 1], [1, 2]],
         [[2, 0], [2, 1], [2, 2]],
@@ -65,22 +69,35 @@ const game = (() => {
 
     const checkIfUserWon = (player) => {
         const board = gameBoard.getBoard();
-        console.log(board);
+        console.table(board);
         console.log("Player: " + player.getName());
         
         const playerSymbol = player.getSymbol();
 
-        winCombinations.forEach((cell) => {
+        for (let i = 0; i < winCombs.length; i++) {
 
-            if (board[cell[0][0]][cell[0][1]] === playerSymbol && board[cell[1][0]][cell[1][1]] === playerSymbol && board[cell[2][0]][cell[2][1]] === playerSymbol) {
+            if (board[winCombs[i][0][0]][winCombs[i][0][1]] === playerSymbol && board[winCombs[i][1][0]][winCombs[i][1][1]] === playerSymbol && board[winCombs[i][2][0]][winCombs[i][2][1]] === playerSymbol) {
                 console.log(player.getName() + " has won");
                 player.increaseScore();
-                gameBoard.clearBoard();
+                gameBoard.toggleLock();
+                break;
+            } else if (i == winCombs.length - 1 && !board.flat().includes("")) {
+                console.log("Its a draw");
+                gameBoard.toggleLock();
             }
-        })
-
+        }
     }
 
+    const startNextRound = () => {
+        gameBoard.clearBoard();
+        if (gameBoard.isLocked()) {
+            gameBoard.toggleLock();
+        }
+    }
 
-    return {play};
+    return {play, startNextRound};
+})();
+
+const userInteractions = (() => {
+
 })();
