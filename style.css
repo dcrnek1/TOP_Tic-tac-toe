@@ -4,4 +4,49 @@
     --clr-orange: #f4743b;
     --clr-dark-silk: #d8cfaf;
     --clr-light-silk: #fcf0cc;
+    --clr-dark-text: #787783;
+    --gap-small: 5px;
+    --gap-big: 10px;
+}
+
+body {
+    margin: 0;
+}
+
+.block {
+    border: 1px solid;
+    margin: 10px;
+}
+
+/* HEADING SECTION - PLAYERS AND SCORE */
+
+.section-game-info {
+    display: flex;
+    justify-content: center;
+}
+
+.game-info {
+    width: 100%;
+    max-width: 700px;
+}
+
+/* HEADING SECTION - PLAYERS */
+
+.game-info__players {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.player {
+    display: flex;
+    gap: var(--gap-small);
+}
+
+/* HEADING SECTION - SCORE */
+
+.game-info__score {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
