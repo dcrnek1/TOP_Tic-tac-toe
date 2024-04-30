@@ -13,7 +13,7 @@
     --padding-big: 30px;
     --padding-huge: 45px;
     --border-radius: 10px;
-    --shdw-outside: "drop-shadow(0px 0px 8.8px rgba(0, 0, 0, 0.35))";
+    --shdw-outside: drop-shadow(0px 0px 2.5px rgba(0, 0, 0, 0.35));
     --shdw-inside: inset 0px 0px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
@@ -109,6 +109,41 @@ body {
 }
 
 .score {
-    font-size: 3rem;
+    font-size: 3.7rem;
     color: var(--clr-dark-text);
+}
+
+
+/* GAME SECTION */
+
+.section-game {
+    display: flex;
+    justify-content: center;
+    padding: var(--padding-big) 0;
+}
+
+.game-background {
+    background-color: var(--clr-dark-silk);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shdw-inside);
+    display: grid;
+    width: 500px;
+    height: 500px;
+    grid-template: 1fr 1fr 1fr / 1fr 1fr 1fr;
+    align-content: center;
+    gap: var(--padding-big);
+    padding: var(--padding-big)
+}
+
+.cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--clr-dark-rose);
+    border-radius: var(--border-radius);
+    filter: var(--shdw-outside);
+    color: var(--clr-orange);
+    font-size: 5rem;
+    font-weight: bolder;
+
 }
