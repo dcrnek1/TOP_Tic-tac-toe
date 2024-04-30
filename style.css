@@ -1,16 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@300..700&display=swap');
+
 :root {
-    --clr-dark-green: #1a3a3a;
-    --clr-dark-rose: #7f636e;
-    --clr-orange: #f4743b;
-    --clr-dark-silk: #d8cfaf;
-    --clr-light-silk: #fcf0cc;
+    --clr-dark-green: #316868;
+    --clr-dark-rose: #CCCBE1;
+    --clr-orange: #FF5C67;
+    --clr-dark-silk: #EBE6D6;
+    --clr-light-silk: #FEF9EC;
     --clr-dark-text: #787783;
     --gap-small: 5px;
     --gap-big: 10px;
+    --padding-small: 20px;
+    --padding-big: 30px;
+    --padding-huge: 45px;
+    --border-radius: 10px;
+    --shdw-outside: "drop-shadow(0px 0px 8.8px rgba(0, 0, 0, 0.35))";
+    --shdw-inside: inset 0px 0px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
 body {
     margin: 0;
+    background-color: var(--clr-dark-rose);
+    font-family: 'Jura';
+    font-weight: 800;
+    font-size: larger;
 }
 
 .block {
@@ -23,11 +35,16 @@ body {
 .section-game-info {
     display: flex;
     justify-content: center;
+    padding: var(--padding-big) 0;
+    background-color: var(--clr-dark-silk);
 }
 
 .game-info {
     width: 100%;
     max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-huge)
 }
 
 /* HEADING SECTION - PLAYERS */
@@ -40,7 +57,24 @@ body {
 
 .player {
     display: flex;
-    gap: var(--gap-small);
+    align-items: center;
+    gap: var(--padding-small);
+}
+
+.player__name {
+    padding: var(--gap-small);
+    background-color: var(--clr-light-silk);
+    padding: var(--gap-big) var(--padding-huge);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shdw-inside);
+    color: var(--clr-dark-green);
+    font-weight: 900;
+}
+
+.player__symbol {
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--clr-dark-text)
 }
 
 /* HEADING SECTION - SCORE */
@@ -49,4 +83,32 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 var(--padding-big)
+}
+
+.result {
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-big);
+    align-items: center;
+}
+
+.result__message {
+    color: var(--clr-dark-green);
+    font-size: 1.5rem;
+}
+
+.result__next-round {
+    font-family: 'Jura';
+    font-size: 1rem;
+    border: none;
+    padding: var(--gap-big) var(--padding-big);
+    color: white;
+    background-color: var(--clr-dark-green);
+    border-radius: var(--border-radius);
+}
+
+.score {
+    font-size: 3rem;
+    color: var(--clr-dark-text);
 }
