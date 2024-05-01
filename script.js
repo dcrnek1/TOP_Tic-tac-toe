@@ -92,8 +92,8 @@ const player = (name, symbol) => {
 
 const game = (() => {
     let players = {
-        "one": player("Dario", "X"),
-        "two": player("Hrvoje", "O"),
+        "one": player("Player 1", "X"),
+        "two": player("Player 2", "O"),
     }
     
     //will foreach through them and check if last player have any combination equal.
